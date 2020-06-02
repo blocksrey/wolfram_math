@@ -6,11 +6,11 @@ local output = handle:read("*l")
 handle:close()
 local directory = output.."/wolframlite/math.exe"
 
-local function wlrun(wlstr)
+local function wolfram(wlstr)
 	local handle = popen(directory..' -noprompt -run "Print[ToString[InputForm['..wlstr..']]] Exit[]"', "r")
 	local output = handle:read("*l")
 	handle:close()
 	return sub(output, 2, -2)
 end
 
-return wlrun
+return wolfram
